@@ -40,7 +40,9 @@ const styles = StyleSheet.create({
         marginHorizontal:'10%',
     },
     container:{
-        backgroundColor:'#fff'
+        backgroundColor:'#fff',
+        flex:1,
+        marginTop:'10%',
     },
     text:{
         fontFamily: 'Abhaya Libre',

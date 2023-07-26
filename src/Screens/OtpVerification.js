@@ -7,6 +7,7 @@ import { View } from 'react-native'
 import { Colors } from '../assest/Colors'
 import { TouchableOpacity } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
+import { FontAwesome5 } from '@expo/vector-icons';
 
 export default function OTPVerification() {
   const navigation = useNavigation();
@@ -16,6 +17,9 @@ export default function OTPVerification() {
   const forthInput = useRef()
   const actualOTP = '0000';
   const [otp, setOtp] = useState({1: '', 2: '', 3:'', 4:''})
+  const handleBackButton = () => {
+    navigation.goBack();
+    }
 
   const handleOTPVerification = () => {
     const enteredOTP = `${otp[1]}${otp[2]}${otp[3]}${otp[4]}`;
@@ -48,8 +52,10 @@ export default function OTPVerification() {
   };
   
   return (
-    <ImageBackground source={require('../assest/images/image7.png')} style={styles.background}>
+    <ImageBackground source={require('../assest/images/back.jpg')} style={styles.background}>
+
     <View style={styles.container}>
+    <FontAwesome5 name="arrow-left" size={30} color="white" onPress={handleBackButton} />
       <Text style={styles.text}>Verification</Text>
       <Text style={styles.text1}>Enter the OTP from the phone we just sent you.</Text>
       <View style={styles.otpcontainer}>
@@ -86,7 +92,10 @@ export default function OTPVerification() {
            }}/>
         </View>
       </View>
-      <Text style={styles.text1}> Didn't receive OTP COde! <Text style={{fontWeight:900}} onPress={handleResend}>Resend</Text></Text>
+      <View style={styles.bottom}>
+      <Text style={styles.text1}> Didn't receive OTP Code! </Text><Text style={{fontWeight:900,color:'#fff', fontSize: 15,}} onPress={handleResend}>Resend</Text>
+      </View>
+      
       <TouchableOpacity style={styles.button} onPress={handleOTPVerification} >
         <Text style={styles.buttonText}>Submit</Text>
       </TouchableOpacity>
@@ -98,10 +107,13 @@ const styles = StyleSheet.create({
   container:{
     flex :1,
     marginTop:'20%',
-    paddingHorizontal: '10%'
+    paddingHorizontal: '10%',
+    opacity:0.7,
   },
   text:{
     color:'#fff',
+    marginTop:'10%',
+   
     fontSize: 22,
     fontWeight: '700',
     
@@ -114,7 +126,7 @@ const styles = StyleSheet.create({
     },
   otpcontainer:{
     marginHorizontal:'10%',
-    marginVertical:'20%',
+    marginVertical:'10%',
     justifyContent:'space-evenly',
     alignItems:'center',
     flexDirection:'row',
@@ -152,6 +164,10 @@ const styles = StyleSheet.create({
     fontSize: 15,
     fontWeight: '400',
 
+  },
+  bottom:{
+    flexDirection:'row',
+    justifyContent:'space-around',
   }
 
 })

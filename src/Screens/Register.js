@@ -2,7 +2,10 @@ import React from 'react'
 import { ImageBackground, StyleSheet, Text, TextInput, View } from 'react-native'
 import { Colors } from '../assest/Colors'
 import { TouchableOpacity } from 'react-native'
+import { FontAwesome5 } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
+import { ScrollView } from 'react-native';
+import CustomTextInput from '../Components/CustomInput';
 
 export default function Register() {
   const navigation = useNavigation();
@@ -10,15 +13,26 @@ export default function Register() {
     
     navigation.navigate('Login');
   };
+  const handleBackButton = () => {
+    navigation.goBack();
+}
   return (
 
-    <ImageBackground source={require('../assest/images/image7.png')} style={styles.background}>
+    <ImageBackground source={require('../assest/images/back.jpg')} style={styles.background}>
+      
 
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
+    <FontAwesome5 name="arrow-left" size={30} color="white" onPress={handleBackButton} />
         <Text style={styles.text}>Register</Text>
         <Text style={styles.text1}>Create your Account!</Text>
+        <CustomTextInput placeholder="Username" />
+        <CustomTextInput placeholder="Email" />
+        <CustomTextInput placeholder="MobileNumber" />
+        <CustomTextInput placeholder="NIRC Number" />
+        <CustomTextInput placeholder="Password" />
+        <CustomTextInput placeholder="Confirm Password" />
     
-        <TextInput
+        {/* <TextInput
   style={styles.textinput}
   placeholder="Username"
   placeholderTextColor="#fff" 
@@ -59,23 +73,24 @@ export default function Register() {
   placeholderTextColor="#fff" 
   fontSize={22} 
   paddingVertical={12} 
-  paddingHorizontal={50} />
+  paddingHorizontal={50} /> */}
   <TouchableOpacity style={styles.button} onPress={navigateToRegister}>
         <Text style={styles.buttonText} >Continue</Text>
       </TouchableOpacity>
 
-    </View>
+    </ScrollView>
     </ImageBackground>
   )
 }
 const styles = StyleSheet.create({
     container:{
-        paddingHorizontal: '10%'
+        paddingHorizontal: '10%',
+         marginTop: '10%',
         },
         text: {
             color: '#fff',
             fontFamily: 'Abhaya Libre',
-            marginTop: '10%',
+            marginTop: '5%',
             fontSize: 40,
             fontWeight: '700',
           },
@@ -117,9 +132,10 @@ const styles = StyleSheet.create({
           button: {
             backgroundColor: Colors.BlueColor,
             paddingVertical: '4%',
-            marginTop: '12%',
-            borderRadius: 20,
+            marginTop: '5%',
+            borderRadius: 30,
             alignItems: 'center',
+            opacity:0.8,
             // marginHorizontal:'10%'
             
           },

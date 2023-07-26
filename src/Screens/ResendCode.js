@@ -9,6 +9,7 @@ import { TouchableOpacity } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import { ActivityIndicator } from 'react-native'
 import { Modal } from 'react-native'
+import { FontAwesome5 } from '@expo/vector-icons';
 
 export default function ResendCode() {
   const navigation = useNavigation();
@@ -19,6 +20,9 @@ export default function ResendCode() {
   const actualOTP = '1111';
   const [otp, setOtp] = useState({1: '', 2: '', 3:'', 4:''});
   const [showSpinner, setShowSpinner] = useState(false);
+  const handleBackButton = () => {
+    navigation.goBack();
+    }
 
   const handleOTPVerification = () => {
     setShowSpinner(true);
@@ -54,8 +58,10 @@ export default function ResendCode() {
   
   
   return (
-    <ImageBackground source={require('../assest/images/image7.png')} style={styles.background}>
+    <ImageBackground source={require('../assest/images/back.jpg')} style={styles.background}>
+        
     <View style={styles.container}>
+         <FontAwesome5 name="arrow-left" size={30} color="white" onPress={handleBackButton} />
       <Text style={styles.text}>Resend</Text>
       <Text style={styles.text1}>Enter the OTP from the phone we just sent you.</Text>
       <View style={styles.otpcontainer}>
@@ -94,12 +100,15 @@ export default function ResendCode() {
       </View>
       <Text style={styles.text1}> Didn't receive OTP COde! </Text>
       {showSpinner ? (
-        <View>
-        <Modal  style={styles.modal}> 
+          <View style={styles.modalContainer}>
+            <Modal transparent animationType="fade" visible={showSpinner}>
+              <View style={styles.modal}>
+               
                 <ActivityIndicator size="large" color={Colors.BlueColor} />
-        </Modal>
-        </View>
-          
+                <Text>PleaseWait</Text>
+              </View>
+            </Modal>
+          </View>
         ) : (
           <TouchableOpacity style={styles.button} onPress={handleOTPVerification}>
             <Text style={styles.buttonText}>Submit</Text>
@@ -168,13 +177,28 @@ const styles = StyleSheet.create({
     fontWeight: '400',
 
   },
-  modal:{
-    margin: 20,
+  // modal:{
+  //   margin: 20,
+  //   backgroundColor: 'white',
+  //   borderRadius: 20,
+  //   padding: 35,
+  //   alignItems: 'center',
+  //   shadowColor: '#000',
+  // }
+  modalContainer: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    
+  },
+  modal: {
     backgroundColor: 'white',
-    borderRadius: 20,
+     borderRadius: 10,
     padding: 35,
     alignItems: 'center',
     shadowColor: '#000',
-  }
+    marginTop: '80%',
+    marginHorizontal:'10%',
+  },
 
 })

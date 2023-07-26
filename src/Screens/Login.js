@@ -1,13 +1,16 @@
 import React, { useState } from 'react';
-import { Image, ImageBackground, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { Image, ImageBackground, StyleSheet, Text, TextInput, TouchableOpacity, View,ScrollView } from 'react-native';
 import { Colors } from '../assest/Colors';
 import PhoneInput from 'react-native-phone-number-input';
 import { EvilIcons } from '@expo/vector-icons';
 import PhoneInputWithDropdown from '../Components/CoutryPicker';
 import { useNavigation } from '@react-navigation/native';
+import FlagDropdown from '../Components/FlagComponent';
 
 export default function Login() {
+  const [value, setValue] = useState()
   const navigation = useNavigation();
+  const [selectedFlag, setSelectedFlag] = useState({ code: '+91', image: require('../assest/images/image1.png') });
   
   
 
@@ -21,13 +24,30 @@ export default function Login() {
   };
 
   return (
-    <ImageBackground source={require('../assest/images/image7.png')} style={styles.background}>
-      <View style={styles.container}>
+    <ImageBackground source={require('../assest/images/back.jpg')} style={styles.background}>
+      <ScrollView style={styles.container}>
         <Text style={[styles.text, styles.text1]}>welcome back</Text>
         <Text style={styles.text2}>Login your own Account!</Text>
-        <PhoneInputWithDropdown/>
+        {/* <PhoneInputWithDropdown/> */}
+        {/* <View style={styles.flagInputContainer}>
+          <FlagDropdown onSelectFlag={setSelectedFlag} />
+          <TextInput
+            style={styles.phoneInput}
+            placeholder="Enter your phone number"
+            keyboardType="phone-pad"
+          />
+          </View> */}
+        {/* <View style={styles.inputContainer}>
+          <Image source={require('../assest/images/gimage.jpg')} style={styles.flag} />
+          <Text style={styles.phoneCode}>+91</Text>
+          <TextInput
+            style={styles.phoneInput}
+            placeholder="Enter your phone number"
+            keyboardType="phone-pad"
+          />
+          </View> */}
         {/* <TextInput style={styles.textinput} placeholder="Username" /> */}
-        {/* <View>
+        <View style={styles.phoneInputContainer}>
           <PhoneInput
             placeholder="Phone Number"
             value={value}
@@ -36,11 +56,11 @@ export default function Login() {
             flagButtonStyle={styles.flagButtonStyle}
             codeTextStyle={{ color: '#fff' }} // Customize the phone number text color
           />
-        </View> */}
+        </View>
         <TouchableOpacity style={styles.button} onPress={navigateToOtp}>
         <Text style={styles.buttonText} >Continue</Text>
       </TouchableOpacity>
-      <Text style={{color:'white',marginLeft:'10%'}}>We’ll send OTP for Verification</Text>
+      <Text style={{color:'white',marginLeft:'10%',fontSize: 16,marginTop:'5%'}}>We’ll send OTP for Verification</Text>
       <TouchableOpacity style={styles.facebook} >
       <EvilIcons name="sc-facebook" size={28} color="white" />
         <Text style={styles.buttonText}>Log in With Facebook</Text>
@@ -53,15 +73,16 @@ export default function Login() {
         <Text style={styles.buttonText}>Register</Text>
       </TouchableOpacity>
      
-      </View>
+      </ScrollView>
     </ImageBackground>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: 'rgba(0, 0, 0, 0.7)',
+    marginTop: '10%',
     paddingHorizontal: '10%',
+    opacity:0.7,
   },
   text: {
     color: '#fff',
@@ -77,10 +98,10 @@ const styles = StyleSheet.create({
     fontWeight: '700',
     color: '#fff',
   },
-  background: {
-    flex: 1,
-    resizeMode: 'cover',
-    width: '100%',
+  background:{
+    width:'100%',
+    height:'100%',
+
   },
   textinput: {
     marginVertical: '10%',
@@ -94,20 +115,26 @@ const styles = StyleSheet.create({
     justifyContent:'center',
     
   },
+  // phoneInputContainer: {
+  //   borderRadius: 20,
+  //   backgroundColor: Colors.Bordercolor,
+  //   padding: 10,
+  //   marginTop: '10%',
+  // },
   phoneInputContainer: {
-    borderRadius: 20,
-    backgroundColor: Colors.Bordercolor,
-    padding: 10,
     marginTop: '10%',
+    borderRadius: 20, // Set the desired border radius here
+    overflow: 'hidden', // This ensures the border radius is applied to the content inside the container
   },
   phoneInputTextContainer: {
-    borderRadius: 20,
-    backgroundColor: 'black',
+    // borderRadius: 20,
+    backgroundColor: Colors.Bordercolor,
     padding: 10,
+    
    
   },
   flagButtonStyle: {
-    backgroundColor: 'green', 
+    backgroundColor: Colors.Bordercolor, 
     borderTopLeftRadius: 20,
     borderBottomLeftRadius: 20,
     paddingHorizontal: 10,
@@ -154,5 +181,42 @@ const styles = StyleSheet.create({
   gtext:{
     fontSize: 22,
     fontWeight: '700',
-  }
+  },
+  inputContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginTop: 30,
+    backgroundColor: 'rgba(255, 255, 255, 0.7)',
+    borderRadius: 10,
+    padding: 10,
+    borderRadius:20,
+  },
+  flag: {
+    width: 30,
+    height: 20,
+    marginRight: 10,
+  },
+  phoneCode: {
+    fontSize: 18,
+    marginRight: 10,
+  },
+  phoneInput: {
+    flex: 1,
+    fontSize: 18,
+  },
+  flagInputContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 20,
+  },
+  phoneInput: {
+    flex: 1,
+    color: '#fff',
+    marginVertical: '5%',
+    borderRadius: 50,
+    borderColor: '#fff',
+    borderWidth: 2,
+    backgroundColor: Colors.Bordercolor,
+    padding: '4%',
+  },
 });

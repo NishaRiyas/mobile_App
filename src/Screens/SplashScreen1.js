@@ -54,11 +54,12 @@ const styles = StyleSheet.create({
         height: 120,
         borderWidth: 8,
         borderColor: Colors.Bordercolor,
+
     },
     imagecontainer:{
         flexDirection:'row',
         justifyContent:'space-around',
-        marginTop: '10%',
+        marginTop: '20%',
     },
     imagevertical:{
         width : '80%',
