@@ -2,15 +2,18 @@ import React, { useState } from 'react';
 import { Image, ImageBackground, StyleSheet, Text, TextInput, TouchableOpacity, View,ScrollView } from 'react-native';
 import { Colors } from '../assest/Colors';
 import PhoneInput from 'react-native-phone-number-input';
-import { EvilIcons } from '@expo/vector-icons';
-import PhoneInputWithDropdown from '../Components/CoutryPicker';
+// import { EvilIcons } from '@expo/vector-icons';
+// import PhoneInputWithDropdown from '../Components/CoutryPicker';
 import { useNavigation } from '@react-navigation/native';
-import FlagDropdown from '../Components/FlagComponent';
+// import FlagDropdown from '../Components/FlagComponent';
+import ExternalStyle from '../assest/Style';
+import CustomButton from '../Components/CustomButtom';
+import SocialButton from '../Components/SocialButton';
 
 export default function Login() {
   const [value, setValue] = useState()
   const navigation = useNavigation();
-  const [selectedFlag, setSelectedFlag] = useState({ code: '+91', image: require('../assest/images/image1.png') });
+  // const [selectedFlag, setSelectedFlag] = useState({ code: '+91', image: require('../assest/images/image1.png') });
   
   
 
@@ -24,7 +27,7 @@ export default function Login() {
   };
 
   return (
-    <ImageBackground source={require('../assest/images/back.jpg')} style={styles.background}>
+    <ImageBackground source={require('../assest/images/back.jpg')} style={ExternalStyle.container}>
       <ScrollView style={styles.container}>
         <Text style={[styles.text, styles.text1]}>welcome back</Text>
         <Text style={styles.text2}>Login your own Account!</Text>
@@ -57,21 +60,25 @@ export default function Login() {
             codeTextStyle={{ color: '#fff' }} // Customize the phone number text color
           />
         </View>
-        <TouchableOpacity style={styles.button} onPress={navigateToOtp}>
+        {/* <TouchableOpacity style={styles.button} onPress={navigateToOtp}>
         <Text style={styles.buttonText} >Continue</Text>
-      </TouchableOpacity>
+      </TouchableOpacity> */}
+      <CustomButton onPress={navigateToOtp} text="Continue" />
       <Text style={{color:'white',marginLeft:'10%',fontSize: 16,marginTop:'5%'}}>We’ll send OTP for Verification</Text>
-      <TouchableOpacity style={styles.facebook} >
+      {/* <TouchableOpacity style={styles.facebook} >
       <EvilIcons name="sc-facebook" size={28} color="white" />
         <Text style={styles.buttonText}>Log in With Facebook</Text>
       </TouchableOpacity>
       <TouchableOpacity style={styles.google} >
         <Image style={styles.image} source={require('../assest/images/gimage.jpg')}/>
         <Text style={styles.gtext}>Log in with Google</Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.button} onPress={navigateToLogin} >
+      </TouchableOpacity> */}
+      <SocialButton type="facebook"/>
+      <SocialButton type="google"/>
+      {/* <TouchableOpacity style={styles.button} onPress={navigateToLogin} >
         <Text style={styles.buttonText}>Register</Text>
-      </TouchableOpacity>
+      </TouchableOpacity> */}
+      <CustomButton onPress={navigateToLogin} text="Register" />
      
       </ScrollView>
     </ImageBackground>

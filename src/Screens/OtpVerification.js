@@ -8,6 +8,7 @@ import { Colors } from '../assest/Colors'
 import { TouchableOpacity } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import { FontAwesome5 } from '@expo/vector-icons';
+import ExternalStyle from '../assest/Style'
 
 export default function OTPVerification() {
   const navigation = useNavigation();
@@ -19,7 +20,7 @@ export default function OTPVerification() {
   const [otp, setOtp] = useState({1: '', 2: '', 3:'', 4:''})
   const handleBackButton = () => {
     navigation.goBack();
-    }
+}
 
   const handleOTPVerification = () => {
     const enteredOTP = `${otp[1]}${otp[2]}${otp[3]}${otp[4]}`;
@@ -52,7 +53,10 @@ export default function OTPVerification() {
   };
   
   return (
-    <ImageBackground source={require('../assest/images/back.jpg')} style={styles.background}>
+  
+
+  
+    <ImageBackground source={require('../assest/images/back.jpg')} style={ExternalStyle.container}>
 
     <View style={styles.container}>
     <FontAwesome5 name="arrow-left" size={30} color="white" onPress={handleBackButton} />
@@ -93,7 +97,8 @@ export default function OTPVerification() {
         </View>
       </View>
       <View style={styles.bottom}>
-      <Text style={styles.text1}> Didn't receive OTP Code! </Text><Text style={{fontWeight:900,color:'#fff', fontSize: 15,}} onPress={handleResend}>Resend</Text>
+      <Text style={styles.text1}> Didn't receive OTP Code! </Text>
+      <Text style={{fontWeight:900,color:'#fff', fontSize: 15,}} onPress={handleResend}>Resend</Text>
       </View>
       
       <TouchableOpacity style={styles.button} onPress={handleOTPVerification} >
@@ -101,32 +106,32 @@ export default function OTPVerification() {
       </TouchableOpacity>
     </View>
     </ImageBackground>
+    
       )
 }
 const styles = StyleSheet.create({
   container:{
     flex :1,
-    marginTop:'20%',
+    marginTop:'10%',
     paddingHorizontal: '10%',
     opacity:0.7,
   },
   text:{
     color:'#fff',
     marginTop:'10%',
-   
     fontSize: 22,
     fontWeight: '700',
     
   },
  
-    background:{
-      width:'100%',
-      height:'100%',
+    // background:{
+    //   width:'100%',
+    //   height:'100%',
 
-    },
+    // },
   otpcontainer:{
-    marginHorizontal:'10%',
-    marginVertical:'10%',
+   
+     flex: 0.3,
     justifyContent:'space-evenly',
     alignItems:'center',
     flexDirection:'row',
@@ -134,15 +139,17 @@ const styles = StyleSheet.create({
   otpbox:{
     borderRadius: 10,
     backgroundColor:Colors.Bordercolor,
-    marginHorizontal:'10%',
+    // marginHorizontal:'10%',
   
   },
   otptext:{
     fontSize:20,
     color:'#fff',
     textAlign:'center',
-    paddingHorizontal:18,
-    paddingVertical:10,
+    // justifyContent:'space-around',
+    //   paddingHorizontal:18,
+    //  paddingVertical:10,
+    padding:12
   },
   button: {
     backgroundColor: Colors.BlueColor,

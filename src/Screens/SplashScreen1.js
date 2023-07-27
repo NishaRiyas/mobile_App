@@ -1,17 +1,18 @@
 import React from 'react'
-import { Image, StyleSheet, Text, View } from 'react-native'
+import { Image, StyleSheet, Text, TextInput, View } from 'react-native'
 import { Colors } from '../assest/Colors'
-import Ellipse from '../Components/Ellipse'
+
 import { useNavigation } from '@react-navigation/native'; 
+import ExternalStyle from '../assest/Style';
 
 export default function SplashScreen() {
-    const navigation = useNavigation(); // Access the navigation prop
+    const navigation = useNavigation(); 
 
   const handleSkip = () => {
-    navigation.navigate('SplashScreen2'); // Navigate to SplashScreen2
+    navigation.navigate('SplashScreen2');
   };
   return (
-    <View>
+    <View style={ExternalStyle.container}>
         <View style={styles.imagecontainer}>
         <Image  style ={styles.image} source={require('../assest/images/image1.png')}/>
         <Image  style ={styles.image} source={require('../assest/images/image2.png')}/>
@@ -33,11 +34,13 @@ export default function SplashScreen() {
         </View>
         <View style={styles.skip}>
         <View style={styles.ellipse}>
-        <Ellipse width={15} height={10}/>
-        <Ellipse width={15} height={10}/>
-        <Ellipse width={15} height={10}/>
+        
+        <TextInput style={styles.textinput}/>
+        <TextInput style={styles.textInput1}/>
+        <TextInput style={styles.textinput}/>
         </View>
         <View>
+            
             <Text onPress={handleSkip}>Skip</Text>
         
         </View>
@@ -93,7 +96,7 @@ const styles = StyleSheet.create({
         
     },
     bottom:{
-        fontFamily: 'Abhaya Libre',
+        fontFamily: 'AbhayaLibre-Regular',
     fontSize: 25,
     fontWeight: '400',
     // lineHeight: 39,
@@ -104,6 +107,7 @@ const styles = StyleSheet.create({
     },
     ellipse:{
         flexDirection:'row',
+
     // marginHorizontal:'10%',
     
     },
@@ -111,5 +115,18 @@ const styles = StyleSheet.create({
         flexDirection:'row',
         justifyContent:'space-between',
         marginHorizontal:'10%',
-    }
+    },
+    textinput:{
+        borderRadius:50,
+        height:10,
+        width:15,
+        backgroundColor: Colors.Bordercolor,
+    },
+    textInput1:{
+        backgroundColor : '#71C549',
+        borderRadius:50,
+        height:10,
+        width:15,
+    },
+
 })

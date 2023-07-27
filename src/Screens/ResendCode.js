@@ -10,6 +10,8 @@ import { useNavigation } from '@react-navigation/native'
 import { ActivityIndicator } from 'react-native'
 import { Modal } from 'react-native'
 import { FontAwesome5 } from '@expo/vector-icons';
+import ExternalStyle from '../assest/Style'
+import CustomButton from '../Components/CustomButtom'
 
 export default function ResendCode() {
   const navigation = useNavigation();
@@ -22,7 +24,7 @@ export default function ResendCode() {
   const [showSpinner, setShowSpinner] = useState(false);
   const handleBackButton = () => {
     navigation.goBack();
-    }
+}
 
   const handleOTPVerification = () => {
     setShowSpinner(true);
@@ -58,7 +60,8 @@ export default function ResendCode() {
   
   
   return (
-    <ImageBackground source={require('../assest/images/back.jpg')} style={styles.background}>
+    
+    <ImageBackground source={require('../assest/images/back.jpg')}style={ExternalStyle.container}>
         
     <View style={styles.container}>
          <FontAwesome5 name="arrow-left" size={30} color="white" onPress={handleBackButton} />
@@ -110,51 +113,63 @@ export default function ResendCode() {
             </Modal>
           </View>
         ) : (
-          <TouchableOpacity style={styles.button} onPress={handleOTPVerification}>
-            <Text style={styles.buttonText}>Submit</Text>
-          </TouchableOpacity>
+          // <TouchableOpacity style={styles.button} onPress={handleOTPVerification}>
+          //   <Text style={styles.buttonText}>Submit</Text>
+          // </TouchableOpacity>
+          <CustomButton onPress={handleOTPVerification} text="Submit" />
         )}
     </View>
     </ImageBackground>
+   
       )
 }
 const styles = StyleSheet.create({
   container:{
     flex :1,
-    marginTop:'20%',
-    paddingHorizontal: '10%'
+    marginTop:'10%',
+    paddingHorizontal: '10%',
+    opacity:0.7,
   },
   text:{
     color:'#fff',
     fontSize: 22,
     fontWeight: '700',
+    marginTop:'10%',
     
   },
  
-    background:{
-      width:'100%',
-      height:'100%',
+    // background:{
+    //   width:'100%',
+    //   height:'100%',
 
-    },
+    // },
+  // otpcontainer:{
+  //   marginHorizontal:'10%',
+  //   marginVertical:'20%',
+  //   justifyContent:'space-evenly',
+  //   alignItems:'center',
+  //   flexDirection:'row',
+  // },
   otpcontainer:{
-    marginHorizontal:'10%',
-    marginVertical:'20%',
-    justifyContent:'space-evenly',
-    alignItems:'center',
-    flexDirection:'row',
-  },
+   
+    flex: 0.3,
+   justifyContent:'space-evenly',
+   alignItems:'center',
+   flexDirection:'row',
+ },
   otpbox:{
     borderRadius: 10,
     backgroundColor:Colors.Bordercolor,
-    marginHorizontal:'10%',
+    // marginHorizontal:'10%',
   
   },
   otptext:{
     fontSize:20,
     color:'#fff',
     textAlign:'center',
-    paddingHorizontal:18,
-    paddingVertical:10,
+    // paddingHorizontal:18,
+    // paddingVertical:10,
+    padding:15,
   },
   button: {
     backgroundColor: Colors.BlueColor,

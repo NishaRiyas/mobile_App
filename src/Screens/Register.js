@@ -6,6 +6,8 @@ import { FontAwesome5 } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import { ScrollView } from 'react-native';
 import CustomTextInput from '../Components/CustomInput';
+import ExternalStyle from '../assest/Style';
+import CustomButton from '../Components/CustomButtom';
 
 export default function Register() {
   const navigation = useNavigation();
@@ -18,7 +20,7 @@ export default function Register() {
 }
   return (
 
-    <ImageBackground source={require('../assest/images/back.jpg')} style={styles.background}>
+    <ImageBackground source={require('../assest/images/back.jpg')} style={ExternalStyle.container}>
       
 
     <ScrollView style={styles.container}>
@@ -74,9 +76,10 @@ export default function Register() {
   fontSize={22} 
   paddingVertical={12} 
   paddingHorizontal={50} /> */}
-  <TouchableOpacity style={styles.button} onPress={navigateToRegister}>
+  {/* <TouchableOpacity style={styles.button} onPress={navigateToRegister}>
         <Text style={styles.buttonText} >Continue</Text>
-      </TouchableOpacity>
+      </TouchableOpacity> */}
+      <CustomButton onPress={navigateToRegister} text="Register" />
 
     </ScrollView>
     </ImageBackground>
@@ -86,6 +89,7 @@ const styles = StyleSheet.create({
     container:{
         paddingHorizontal: '10%',
          marginTop: '10%',
+         opacity:0.7,
         },
         text: {
             color: '#fff',

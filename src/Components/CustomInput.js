@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
     
     backgroundColor: Colors.Bordercolor,
     padding: '4%',
-    opacity:0.5,
+    // opacity:0.5,
   },
 });
 
