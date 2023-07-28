@@ -131,7 +131,7 @@ const styles = StyleSheet.create({
   phoneInputContainer: {
     marginTop: '10%',
     borderRadius: 30, 
-    overflow: 'hidden',
+    overflow: 'hidden', 
   },
   phoneInputTextContainer: {
     // borderRadius: 20,

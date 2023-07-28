@@ -33,6 +33,7 @@ export default function OTPVerification() {
     } else {
       
       console.log('Incorrect OTP. Please try again.');
+      console.log(otp[2]);
       Alert.alert('Incorrect OTP', 'Please enter the correct OTP or Resend the Code.',
       [
         {
