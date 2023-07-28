@@ -87,7 +87,7 @@ export default function Register() {
 }
 const styles = StyleSheet.create({
     container:{
-        paddingHorizontal: '10%',
+        // paddingHorizontal: '10%',
          marginTop: '10%',
          opacity:0.7,
         },

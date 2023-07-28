@@ -7,6 +7,7 @@ import Login from '../Screens/Login';
 import OTPVerification from '../Screens/OtpVerification';
 import Register from '../Screens/Register';
 import ResendCode from '../Screens/ResendCode';
+import DashBoard from '../Screens/DashBoard';
 
 const stack = createNativeStackNavigator();
 
@@ -21,6 +22,7 @@ export default function StackNavigation() {
         <stack.Screen name ="Register" component={Register}/>
         <stack.Screen name ="Otpverification" component={OTPVerification}/>
         <stack.Screen name='ResendCode' component={ResendCode}/>
+        <stack.Screen name='Dashboard' component={DashBoard}/>
       </stack.Navigator>
 
     </NavigationContainer>

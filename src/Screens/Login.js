@@ -88,7 +88,7 @@ export default function Login() {
 const styles = StyleSheet.create({
   container: {
     marginTop: '10%',
-    paddingHorizontal: '10%',
+    paddingHorizontal: '5%',
     opacity:0.7,
   },
   text: {
@@ -130,8 +130,8 @@ const styles = StyleSheet.create({
   // },
   phoneInputContainer: {
     marginTop: '10%',
-    borderRadius: 20, // Set the desired border radius here
-    overflow: 'hidden', // This ensures the border radius is applied to the content inside the container
+    borderRadius: 30, 
+    overflow: 'hidden',
   },
   phoneInputTextContainer: {
     // borderRadius: 20,

@@ -114,7 +114,7 @@ const styles = StyleSheet.create({
     skip:{
         flexDirection:'row',
         justifyContent:'space-between',
-        marginHorizontal:'10%',
+        // marginHorizontal:'10%',
     },
     textinput:{
         borderRadius:50,

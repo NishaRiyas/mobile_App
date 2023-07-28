@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
   button: {
     backgroundColor: Colors.BlueColor,
     paddingVertical: '4%',
-    marginTop: '12%',
+    marginTop: '10%',
     borderRadius: 20,
     alignItems: 'center',
   },

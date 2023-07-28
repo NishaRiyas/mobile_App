@@ -12,6 +12,7 @@ import { Modal } from 'react-native'
 import { FontAwesome5 } from '@expo/vector-icons';
 import ExternalStyle from '../assest/Style'
 import CustomButton from '../Components/CustomButtom'
+import OTPInput from '../Components/OTPInput'
 
 export default function ResendCode() {
   const navigation = useNavigation();
@@ -37,7 +38,7 @@ export default function ResendCode() {
     if (enteredOTP === actualOTP) {
   
       console.log('OTP is correct. Navigating to Login page.');
-      navigation.navigate('Register');
+      navigation.navigate('Dashboard');
     } else {
       
       console.log('Incorrect OTP. Please try again.');
@@ -46,7 +47,7 @@ export default function ResendCode() {
         {
             text: 'OK',
             onPress: () => {
-              navigation.navigate('Login');
+              navigation.navigate('ResendCode');
              
           },
         },
@@ -67,7 +68,7 @@ export default function ResendCode() {
          <FontAwesome5 name="arrow-left" size={30} color="white" onPress={handleBackButton} />
       <Text style={styles.text}>Resend</Text>
       <Text style={styles.text1}>Enter the OTP from the phone we just sent you.</Text>
-      <View style={styles.otpcontainer}>
+      {/* <View style={styles.otpcontainer}>
         <View  style={styles.otpbox}>
           <TextInput style={styles.otptext} keyboardType='number-pad' maxLength={1}
           ref={firstInput}
@@ -100,7 +101,46 @@ export default function ResendCode() {
             !text && thirdInput.current.focus();
            }}/>
         </View>
-      </View>
+
+      </View> */}
+      <View style={styles.otpcontainer}>
+      <OTPInput
+        value={otp[1]}
+        onChangeText={(text) => {
+          setOtp({ ...otp, 1: text });
+          text && secondInput.current.focus();
+        }}
+        
+        refCallback={firstInput}
+      />
+      <OTPInput
+        value={otp[2]}
+        onChangeText={(text) => {
+          setOtp({ ...otp, 2: text });
+          text ? thirdInput.current.focus() : firstInput.current.focus();
+        }}
+        
+        refCallback={secondInput}
+      />
+      <OTPInput
+        value={otp[3]}
+        onChangeText={(text) => {
+          setOtp({ ...otp, 3: text });
+          text ? forthInput.current.focus() : secondInput.current.focus();
+        }}
+        
+        refCallback={thirdInput}
+      />
+      <OTPInput
+        value={otp[4]}
+        onChangeText={(text) => {
+          setOtp({ ...otp, 4: text });
+          !text && thirdInput.current.focus();
+        }}
+        
+        refCallback={forthInput}
+      />
+    </View>
       <Text style={styles.text1}> Didn't receive OTP COde! </Text>
       {showSpinner ? (
           <View style={styles.modalContainer}>
@@ -127,7 +167,7 @@ const styles = StyleSheet.create({
   container:{
     flex :1,
     marginTop:'10%',
-    paddingHorizontal: '10%',
+    paddingHorizontal: '5%',
     opacity:0.7,
   },
   text:{

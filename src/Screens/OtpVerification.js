@@ -9,6 +9,7 @@ import { TouchableOpacity } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import { FontAwesome5 } from '@expo/vector-icons';
 import ExternalStyle from '../assest/Style'
+import OTPInput from '../Components/OTPInput'
 
 export default function OTPVerification() {
   const navigation = useNavigation();
@@ -28,7 +29,7 @@ export default function OTPVerification() {
     if (enteredOTP === actualOTP) {
   
       console.log('OTP is correct. Navigating to Login page.');
-      navigation.navigate('Register');
+      navigation.navigate('Dashboard');
     } else {
       
       console.log('Incorrect OTP. Please try again.');
@@ -62,7 +63,7 @@ export default function OTPVerification() {
     <FontAwesome5 name="arrow-left" size={30} color="white" onPress={handleBackButton} />
       <Text style={styles.text}>Verification</Text>
       <Text style={styles.text1}>Enter the OTP from the phone we just sent you.</Text>
-      <View style={styles.otpcontainer}>
+      {/* <View style={styles.otpcontainer}>
         <View  style={styles.otpbox}>
           <TextInput style={styles.otptext} keyboardType='number-pad' maxLength={1}
           ref={firstInput}
@@ -95,7 +96,45 @@ export default function OTPVerification() {
             !text && thirdInput.current.focus();
            }}/>
         </View>
-      </View>
+      </View> */}
+      <View style={styles.otpcontainer}>
+      <OTPInput
+        value={otp[1]}
+        onChangeText={(text) => {
+          setOtp({ ...otp, 1: text });
+          text && secondInput.current.focus();
+        }}
+        
+        refCallback={firstInput}
+      />
+      <OTPInput
+        value={otp[2]}
+        onChangeText={(text) => {
+          setOtp({ ...otp, 2: text });
+          text ? thirdInput.current.focus() : firstInput.current.focus();
+        }}
+        
+        refCallback={secondInput}
+      />
+      <OTPInput
+        value={otp[3]}
+        onChangeText={(text) => {
+          setOtp({ ...otp, 3: text });
+          text ? forthInput.current.focus() : secondInput.current.focus();
+        }}
+       
+        refCallback={thirdInput}
+      />
+      <OTPInput
+        value={otp[4]}
+        onChangeText={(text) => {
+          setOtp({ ...otp, 4: text });
+          !text && thirdInput.current.focus();
+        }}
+        
+        refCallback={forthInput}
+      />
+    </View>
       <View style={styles.bottom}>
       <Text style={styles.text1}> Didn't receive OTP Code! </Text>
       <Text style={{fontWeight:900,color:'#fff', fontSize: 15,}} onPress={handleResend}>Resend</Text>
@@ -113,7 +152,7 @@ const styles = StyleSheet.create({
   container:{
     flex :1,
     marginTop:'10%',
-    paddingHorizontal: '10%',
+    paddingHorizontal: '5%',
     opacity:0.7,
   },
   text:{

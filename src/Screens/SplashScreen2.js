@@ -73,8 +73,8 @@ const styles = StyleSheet.create({
     skip:{
         flexDirection:'row',
         justifyContent:'space-between',
-        marginHorizontal:'10%',
-        marginTop:'40%',
+        //  marginHorizontal:'10%',
+        // marginTop:'40%',
     },
     textinput:{
         borderRadius:50,
